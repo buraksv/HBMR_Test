@@ -1,0 +1,6 @@
+1- İstenilen ebatlarda oluşması istenilen Mars Platosu temsili olarak olan ızgara alan.
+2- Oluşturulan bu alanda gezinti yapacak olan 2 adet Rover.
+3- Roverlara koordinat ve yön vererek ızgara üzerinde konumlantırılması.
+4- Roverlara yönlendirme komutları vererek ızgara üzerinde yönlendirilmesi.
+5- Yönlendirme komutları bittikten sonra roverların bulunduğu son konumların {x y direction} şeklinde gösterilmesi. Eğer son konum ızgara dışında kalmışsa uyarı verdirilmesi.
+ 

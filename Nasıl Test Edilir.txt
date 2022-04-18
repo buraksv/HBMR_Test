@@ -1,0 +1,3 @@
+1- Unit Testler çalıştırılarak test edilebilir
+2- Console Uygulamasında args kısmına "auto" parametresi gönderilerek verilen bütün değişkenlerin otomatik olarak işlenerek aldığı son koordinatlar görülebilir.
+3- Console Uygulamasında args kısmını boş geçerek Rover bir klavye ile yönlendirilebilir.
