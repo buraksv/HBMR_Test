@@ -13,7 +13,9 @@ public class Input
         int.TryParse(roverCoordinates[1], out var roverCoordinateY);
         string roverCoordinateDirection = roverCoordinates[2];
 
-        Coordinates=new(roverCoordinateX,roverCoordinateY,roverCoordinateDirection);
+        Enum.TryParse(roverCoordinateDirection, out EnumDirection direction);
+        
+        Coordinates=new(roverCoordinateX,roverCoordinateY,direction);
     }
          
     public string Location { get; }

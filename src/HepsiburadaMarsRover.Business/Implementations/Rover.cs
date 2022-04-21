@@ -6,8 +6,15 @@ public class Rover : IRover
 {
     private IPlateau _plateau; 
     public Coordinate CurrentCoordinate { get; private set; } 
-    private bool IsInBoundaries => CurrentCoordinate.X <= _plateau.CurrentDimension.X && CurrentCoordinate.Y <= _plateau.CurrentDimension.Y;
-
+    private void ControlBoundaries(IPlateau plateau, int x, int y, EnumDirection direction)
+    {
+        var control = x > plateau.CurrentDimension.X || y > plateau.CurrentDimension.Y || x<0 || y<0;
+        if (control)
+        {
+            throw new ArgumentOutOfRangeException($"Rover outside the plateau.  Plateau current dimensions: {_plateau}");
+        }
+    }
+    
     public void Command(char command)
     {
         switch (command)
@@ -19,8 +26,7 @@ public class Rover : IRover
                 TurnLeft();
                 break;
             case 'R':
-                TurnRight();
-
+                TurnRight(); 
                 break;
             default:
                 throw new ArgumentException($"Invalid Command"); 
@@ -30,14 +36,15 @@ public class Rover : IRover
 
     public void Reset()
     {
-        CurrentCoordinate = new(0, 0, EnumDirection.N.ToString());
+        CurrentCoordinate = new(0, 0, EnumDirection.N);
     }
 
-    public void DropToPlateau(IPlateau plateau,int x=0, int y=0, string direction="N")
+    public void DropToPlateau(IPlateau plateau,int x=0, int y=0, EnumDirection direction=EnumDirection.N)
     {
         if (plateau == null) throw new ArgumentNullException(nameof(plateau));
         if (_plateau != null) throw new Exception("The rover already dropped a plateau");
 
+        ControlBoundaries(plateau,x,y,direction);
         _plateau = plateau;
         _plateau.DropRover(this);
         CurrentCoordinate = new(x, y, direction);
@@ -66,7 +73,7 @@ public class Rover : IRover
 
     }
 
-    public void Relocation(int x, int y, string direction)
+    public void Relocation(int x, int y, EnumDirection direction)
     {
         ControlPlateau();
         CurrentCoordinate = new ( x,  y, direction); 
@@ -98,18 +105,13 @@ public class Rover : IRover
 
     }
 
-
     public override string ToString()
     {
         string returnCoordinates = $"{CurrentCoordinate.X} {CurrentCoordinate.Y} {CurrentCoordinate.Direction}";
-
-        if (!IsInBoundaries)
-            returnCoordinates = $"Rover outside the plateau.Rover current position : {returnCoordinates}. Plateau current limit: {_plateau}";
-
+  
         return returnCoordinates;
     }
-
-
+ 
     private void ControlPlateau()
     {
         if (_plateau == null) throw new Exception("Rover not dropped any pleteau");

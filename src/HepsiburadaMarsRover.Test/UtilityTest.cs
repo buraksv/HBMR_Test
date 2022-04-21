@@ -23,5 +23,6 @@ public class UtilityTest
         Input input = new (location,directions);
        
         Assert.True(input.Run(plateau)== output);
-    }
+    } 
+    
 }

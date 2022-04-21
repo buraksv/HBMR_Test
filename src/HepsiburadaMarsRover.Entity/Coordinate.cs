@@ -2,13 +2,11 @@ namespace HepsiburadaMarsRover.Entity;
 
 public class Coordinate
 {
-    public Coordinate(int x, int y, string d)
+    public Coordinate(int x, int y, EnumDirection direction)
     {
         X = x;
-        Y = y;
-
-        Enum.TryParse(d, out EnumDirection direction);
-
+        Y = y; 
+        
         Direction = direction;
     }
 

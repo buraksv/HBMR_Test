@@ -64,7 +64,7 @@ else
     Console.WriteLine("Programdan Çıkmak için \"ESC\" tuşunu kullanabilirsiniz");
     Thread.Sleep(500);
     
-    rover.DropToPlateau(plateau, 3, 3, "E");
+    rover.DropToPlateau(plateau, 3, 3,EnumDirection.E);
     Console.WriteLine($"Rover Yeni lokasyonuna hareket ettirildi. Güncel Lokasyonu: {rover}");
     Thread.Sleep(500);
     Console.WriteLine("===============Şimdi hareket ettirebilirsiniz================");

@@ -12,7 +12,7 @@ public static class Extensions
         {
             Rover rover = new();
 
-            rover.Relocation(item.Coordinates.X,item.Coordinates.Y,item.Coordinates.Direction.ToString());
+            rover.Relocation(item.Coordinates.X,item.Coordinates.Y,item.Coordinates.Direction);
 
             foreach (var command in item.Directions)
             {
@@ -31,7 +31,7 @@ public static class Extensions
 
         Rover rover = new();
         
-        rover.DropToPlateau(plateau,input.Coordinates.X,input.Coordinates.Y,input.Coordinates.Direction.ToString());
+        rover.DropToPlateau(plateau,input.Coordinates.X,input.Coordinates.Y,input.Coordinates.Direction);
  
 
         foreach (var command in input.Directions)
