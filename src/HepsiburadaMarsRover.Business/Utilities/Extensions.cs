@@ -41,12 +41,5 @@ public static class Extensions
 
         return $"{rover}"; 
     }
-
-    public static void Reset(this List<Rover> rovers)
-    {
-        foreach (var item in rovers)
-        {
-            item.Reset();
-        }
-    }
+ 
 }
